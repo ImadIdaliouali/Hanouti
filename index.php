@@ -6,6 +6,7 @@ if (!array_key_exists("username", $_SESSION))
     header("location:logIn.php");
 require "data.php";
 require "header.php";
+echo "<div class=\"container\">";
 echo "<div class=\"products\">";
 foreach ($products as $p) {
     echo "<div class=\"sous-prod\" id=" . $p["id"] . "\">"
@@ -14,6 +15,8 @@ foreach ($products as $p) {
         . "<button class=\"detail\">Deatil</button>"
         . "</div>";
 }
+echo "</div>";
+echo "<div class=\"panier\"></div>";
 echo "</div>";
 ?>
 <!DOCTYPE html>

@@ -15,6 +15,11 @@ header {
     align-items: center;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .products {
     border: 2px solid;
     width: 64vw;
@@ -55,4 +60,9 @@ a {
 #logout {
     background-color: black;
     border: none;
+}
+
+.panier {
+    border: 2px solid;
+    width: 33vw;
 }
