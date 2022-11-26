@@ -1,0 +1,48 @@
+* {
+    font-family: 'Nerko One', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: chocolate;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products {
+    border: 2px solid;
+    width: 64vw;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.sous-prod {
+    border: 1px solid;
+    border-radius: 7%;
+    margin: 5px;
+    padding: 10px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.prod-img {
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+}
+
+.detail {
+    cursor: pointer;
+}
