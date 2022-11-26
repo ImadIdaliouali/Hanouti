@@ -46,3 +46,13 @@ header {
 .detail {
     cursor: pointer;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#logout {
+    background-color: black;
+    border: none;
+}
