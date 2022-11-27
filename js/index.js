@@ -1,8 +1,7 @@
 const articles_liste = document.querySelector(".articles-liste");
 const plus = document.querySelectorAll(".plus");
 const total = document.querySelector(".total");
-
-console.log(products);
+const detail = document.querySelectorAll(".detail");
 
 plus.forEach(elem => elem.addEventListener("click", () => {
     let id = elem.getAttribute("id");
@@ -11,7 +10,6 @@ plus.forEach(elem => elem.addEventListener("click", () => {
 
 let sum = 0;
 let idUsed = [];
-let delArray = [];
 
 function plusClicked(id) {
     products.forEach(p => {
@@ -42,7 +40,6 @@ function plusClicked(id) {
                 let del = document.createElement("img");
                 del.setAttribute("src", "./imgs/del.png");
                 del.setAttribute("class", "del");
-                del.setAttribute("id", `${p.id}`);
                 del.addEventListener("click", () => {
                     let qtt = document.querySelector(`#article${id} .qtt`);
                     if (p.qtt == 1) {
@@ -58,13 +55,19 @@ function plusClicked(id) {
                 // appendChild to articles_liste
                 articles_liste.appendChild(div);
                 idUsed.push(id);
-                delArray.push(del);
             }
             else {
                 let qtt = document.querySelector(`#article${id} .qtt`);
-                console.log(qtt);
                 qtt.textContent = p.qtt;
             }
         }
     });
 }
+
+detail.forEach(element => element.addEventListener("click", () => {
+    products.forEach(p => {
+        if (p.id == element.getAttribute("id")) {
+            console.log(`id: ${p.id}, name: ${p.name}, price: ${p.price}DH`);
+        }
+    });
+}));

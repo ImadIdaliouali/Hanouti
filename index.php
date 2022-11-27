@@ -13,7 +13,7 @@ foreach ($products as $p) {
         . "<img class=\"plus\" id=\"" . $p["id"] . "\" src =\"./imgs/plus.png\">"
         . "<img class=\"prod-img\" src=\"./imgs/" . $p["img"] . "\">"
         . "<p>" . $p["name"] . " : " . $p["price"] . "DH</p>"
-        . "<button class=\"detail\" id=\"detail" . $p["id"] . "\">Deatil</button>"
+        . "<button class=\"detail\" id=\"" . $p["id"] . "\">Deatil</button>"
         . "</div>";
 }
 echo "</div>";
