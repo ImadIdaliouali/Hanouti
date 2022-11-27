@@ -4,20 +4,21 @@ const total = document.querySelector(".total");
 
 console.log(products);
 
-let idUsed = [];
-
 plus.forEach(elem => elem.addEventListener("click", () => {
     let id = elem.getAttribute("id");
     plusClicked(id);
 }));
 
 let sum = 0;
+let idUsed = [];
+let delArray = [];
 
 function plusClicked(id) {
     products.forEach(p => {
         if (p.id == id) {
             p.qtt++;
             sum += p.price;
+            // update total
             total.textContent = `Total: ${sum}DH`;
             if (idUsed.indexOf(id) === -1) {
                 // create article div
@@ -42,11 +43,22 @@ function plusClicked(id) {
                 del.setAttribute("src", "./imgs/del.png");
                 del.setAttribute("class", "del");
                 del.setAttribute("id", `${p.id}`);
+                del.addEventListener("click", () => {
+                    let qtt = document.querySelector(`#article${id} .qtt`);
+                    if (p.qtt == 1) {
+                        articles_liste.removeChild(div);
+                        p.qtt = 0;
+                    } else p.qtt--;
+                    qtt.textContent = `${p.qtt}`;
+                    sum -= p.price;
+                    total.textContent = `Total: ${sum}DH`;
+                    idUsed.pop(id);
+                });
                 div.appendChild(del);
                 // appendChild to articles_liste
                 articles_liste.appendChild(div);
-                // update total
                 idUsed.push(id);
+                delArray.push(del);
             }
             else {
                 let qtt = document.querySelector(`#article${id} .qtt`);
@@ -55,11 +67,4 @@ function plusClicked(id) {
             }
         }
     });
-}
-
-const del = document.querySelectorAll(".del");
-del.forEach(elem => elem.addEventListener("click", delClicked));
-
-function delClicked() {
-    console.log("you clicked me");
 }
