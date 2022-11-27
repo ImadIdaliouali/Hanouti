@@ -9,14 +9,19 @@ require "header.php";
 echo "<div class=\"container\">";
 echo "<div class=\"products\">";
 foreach ($products as $p) {
-    echo "<div class=\"sous-prod\" id=" . $p["id"] . "\">"
+    echo "<div class=\"sous-prod\">"
+        . "<img class=\"plus\" id=\"" . $p["id"] . "\" src =\"./imgs/plus.png\">"
         . "<img class=\"prod-img\" src=\"./imgs/" . $p["img"] . "\">"
         . "<p>" . $p["name"] . " : " . $p["price"] . "DH</p>"
-        . "<button class=\"detail\">Deatil</button>"
+        . "<button class=\"detail\" id=\"detail" . $p["id"] . "\">Deatil</button>"
         . "</div>";
 }
 echo "</div>";
-echo "<div class=\"panier\"></div>";
+echo "<div class=\"panier\">";
+echo "<input class=\"chercher\" type=\"text\" placeholder=\"chercher un produit ...\">";
+echo "<div class=\"total\">Total: 0DH</div>";
+echo "<div class=\"articles-liste\"></div>";
+echo "</div>";
 echo "</div>";
 ?>
 <!DOCTYPE html>
@@ -34,6 +39,9 @@ echo "</div>";
 </head>
 
 <body>
+    <script>
+        var products = <?php echo json_encode($products); ?>;
+    </script>
     <script src="./js/index.js?v=<?php echo time() ?>"></script>
 </body>
 

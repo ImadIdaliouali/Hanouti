@@ -1,21 +1,65 @@
+const articles_liste = document.querySelector(".articles-liste");
+const plus = document.querySelectorAll(".plus");
+const total = document.querySelector(".total");
 
+console.log(products);
 
-function updateList(products) {
-    //Mettre à jour la liste des produit
+let idUsed = [];
+
+plus.forEach(elem => elem.addEventListener("click", () => {
+    let id = elem.getAttribute("id");
+    plusClicked(id);
+}));
+
+let sum = 0;
+
+function plusClicked(id) {
+    products.forEach(p => {
+        if (p.id == id) {
+            p.qtt++;
+            sum += p.price;
+            total.textContent = `Total: ${sum}DH`;
+            if (idUsed.indexOf(id) === -1) {
+                // create article div
+                let div = document.createElement("div");
+                div.setAttribute("class", "article");
+                div.setAttribute("id", `article${p.id}`);
+                // create img
+                let img = document.createElement("img");
+                img.setAttribute("src", `./imgs/${p.img}`);
+                div.appendChild(img);
+                // create name
+                let name = document.createElement("p");
+                name.textContent = p.name;
+                div.appendChild(name);
+                // create qtt
+                let qtt = document.createElement("p");
+                qtt.setAttribute("class", "qtt");
+                qtt.textContent = p.qtt;
+                div.appendChild(qtt);
+                // create del img
+                let del = document.createElement("img");
+                del.setAttribute("src", "./imgs/del.png");
+                del.setAttribute("class", "del");
+                del.setAttribute("id", `${p.id}`);
+                div.appendChild(del);
+                // appendChild to articles_liste
+                articles_liste.appendChild(div);
+                // update total
+                idUsed.push(id);
+            }
+            else {
+                let qtt = document.querySelector(`#article${id} .qtt`);
+                console.log(qtt);
+                qtt.textContent = p.qtt;
+            }
+        }
+    });
 }
 
-function addProd(e) {
-    // Ajout d'un produit au panier (e : event object)
-}
-function delProd(e) {
-    // Suppression d'un produit du panier (e : event object)
+const del = document.querySelectorAll(".del");
+del.forEach(elem => elem.addEventListener("click", delClicked));
 
-}
-
-function updateCart() {
-    // fonction pour mettre à jour le panier
-}
-
-function searchfun(e) {
-    // recherche des des produits contenant le texte saisie dans la zone recherche
+function delClicked() {
+    console.log("you clicked me");
 }
